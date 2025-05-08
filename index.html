@@ -1,13 +1,48 @@
 <!doctype html>
 <html lang="zh-CN">
-  <head data-theme="dark">
+  <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla Theme Manager Example</title>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <title>Vanilla Theme Manager 示例</title>
+    <style>
+      body[data-theme='dark'] {
+        background: #222;
+        color: #fff;
+      }
+      body[data-theme='light'] {
+        background: #fff;
+        color: #222;
+      }
+      .theme-btns button {
+        margin-right: 8px;
+      }
+    </style>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/examples/main.ts"></script>
+    <h1>Vanilla Theme Manager 示例</h1>
+    <div class="theme-btns">
+      <button id="light">浅色模式</button>
+      <button id="dark">深色模式</button>
+      <button id="system">跟随系统</button>
+      <button id="toggle">切换主题</button>
+    </div>
+    <p id="current">当前主题：-</p>
+    <script type="module">
+      import { create } from './src/index.ts'
+
+      const theme = create({
+        el: document.body,
+        attribute: 'data-theme',
+        callback: (mode) => {
+          document.getElementById('current').textContent = '当前主题：' + mode
+        },
+      })
+
+      document.getElementById('light').onclick = () => theme.setTheme('light')
+      document.getElementById('dark').onclick = () => theme.setTheme('dark')
+      document.getElementById('system').onclick = () => theme.setTheme('system')
+      document.getElementById('toggle').onclick = () => theme.toggleTheme()
+    </script>
   </body>
 </html>
