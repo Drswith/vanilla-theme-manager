@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { createThemeManager } from './index'
-import type { ThemeManagerOptions, ThemeMode } from './index'
+import { createThemeManager } from '../src/index'
+import type { ThemeManagerOptions, ThemeMode } from '../src/index'
 
 // 模拟 localStorage
 class FakeStorage implements Storage {

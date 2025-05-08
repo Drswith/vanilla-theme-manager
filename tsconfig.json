@@ -18,10 +18,15 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noEmit": true,
+    "forceConsistentCasingInFileNames": true,
     "verbatimModuleSyntax": true,
     "skipLibCheck": true,
     "noUncheckedSideEffectImports": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "dist", "**/__tests__/**/*"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.{test,spec}.{js,ts}"
+  ]
 }
